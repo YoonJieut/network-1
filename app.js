@@ -16,6 +16,7 @@ const server = http.createServer((req, res)=>{
   // 1. 요청 URL
   // 2. 요청 METHOD
   if (req.url === "/" && req.method === "GET") {
+    // console.log( "잘 작동 중")
     fs.readFile('./static/index.html', 'utf8', (err, data)=>{
       if(err){
         serverErrorLog();
@@ -23,12 +24,12 @@ const server = http.createServer((req, res)=>{
       res.writeHead(200, {'Content-Type' : 'text/html'});
       res.end(data)
     })
-  } else if (req.url === "./static/css/style.css" && req.method === "GET") {
+  } else if (req.url === "/css/style.css" && req.method === "GET") {
     fs.readFile('./static/css/style.css', 'utf8', (err, data)=>{
       if(err){
         serverErrorLog();
       }
-      res.writeHead(200, {'Content-Type' : 'text/html'});
+      res.writeHead(200, {'Content-Type' : 'text/css'});
       res.end(data)
     })
   } else if (req.url === "/js/index.js" && req.method === "GET") {
@@ -36,7 +37,7 @@ const server = http.createServer((req, res)=>{
       if(err){
         serverErrorLog();
       }
-      res.writeHead(200, {'Content-Type' : 'text/html'});
+      res.writeHead(200, {'Content-Type' : 'application/javascript'});
       res.end(data)
     })
   } else {
@@ -44,7 +45,6 @@ const server = http.createServer((req, res)=>{
     res.end('Not Found');
   }
 })
-
 
 
 const PORT = 3000;
