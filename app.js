@@ -24,7 +24,8 @@ const server = http.createServer((req, res)=>{
       res.writeHead(200, {'Content-Type' : 'text/html'});
       res.end(data)
     })
-  } else if (req.url === "/css/style.css" && req.method === "GET") {
+  } 
+  else if (req.url === "/css/style.css" && req.method === "GET") {
     fs.readFile('./static/css/style.css', 'utf8', (err, data)=>{
       if(err){
         serverErrorLog();
@@ -32,7 +33,8 @@ const server = http.createServer((req, res)=>{
       res.writeHead(200, {'Content-Type' : 'text/css'});
       res.end(data)
     })
-  } else if (req.url === "/js/index.js" && req.method === "GET") {
+  } 
+  else if (req.url === "/js/index.js" && req.method === "GET") {
     fs.readFile('./static/js/index.js', 'utf8', (err, data)=>{
       if(err){
         serverErrorLog();
@@ -40,7 +42,8 @@ const server = http.createServer((req, res)=>{
       res.writeHead(200, {'Content-Type' : 'application/javascript'});
       res.end(data)
     })
-  } else {
+  } 
+  else {
     res.writeHead(404);
     res.end('Not Found');
   }
